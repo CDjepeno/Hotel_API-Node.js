@@ -14,7 +14,7 @@ Hotel_Management API
     <img src="https://img.shields.io/badge/Mongoose-V%5E5.10.7-green" alt="mongoose version">
 </p>
 
-![HotelAPI](https://user-images.githubusercontent.com/43074465/112567989-0cb13f00-8de2-11eb-9ed1-99db44510e26.png)
+![hotel_API](https://user-images.githubusercontent.com/43074465/112665375-483c1f80-8e5b-11eb-90c0-35baf74ff35f.png)
 
 
 ![nodeJS](https://user-images.githubusercontent.com/43074465/112568039-26eb1d00-8de2-11eb-866c-d329ba8f2cf7.png)
