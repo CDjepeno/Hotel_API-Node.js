@@ -30,6 +30,17 @@ router.get('/rooms', getRooms)
  * /room/:id:
  *    get:
  *      description: update room
+ *       parameters:
+ *       - name: name
+ *         description: name of the room
+ *         in: formData
+ *         required: true
+ *         type: String
+ *       - name: maxPersons
+ *         description: name of the room
+ *         in: formData
+ *         required: true
+ *         type: Number
  *      responses: 
  *          '200': 
  *            description: Success
@@ -68,7 +79,7 @@ router.post('/room', addRoom)
  *          '200': 
  *            description: Success
  */
- router.get('/room', getOneRoom)
+ router.get('/room/:id', getOneRoom)
 
 
 /**
@@ -80,6 +91,6 @@ router.post('/room', addRoom)
  *          '200': 
  *            description: Success
  */
- router.delete('/room', deleteRooms)
+ router.delete('/room/:id', deleteRooms)
 
 export default router
