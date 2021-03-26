@@ -11,7 +11,7 @@ router.use('/api-docs', server, config)
 
 
 router.get('/', (_,res) => {
-    res.send('hello world')
+    res.send('home page')
 })
 
 /**
@@ -23,74 +23,74 @@ router.get('/', (_,res) => {
  *          '200': 
  *            description: Success
  */
-router.get('/rooms', getRooms)
+router.get('/api/rooms', getRooms)
 
 /**
  * @swagger
- * /room/:id:
- *    get:
- *      description: update room
- *       parameters:
- *       - name: name
- *         description: name of the room
- *         in: formData
- *         required: true
- *         type: String
- *       - name: maxPersons
- *         description: name of the room
- *         in: formData
- *         required: true
- *         type: Number
- *      responses: 
- *          '200': 
- *            description: Success
+ * /rooms/:id:
+ *       put:
+ *         description: update room
+ *         parameters:
+ *         - name: name
+ *           description: name of the room
+ *           in: formData
+ *           required: true
+ *           type: String
+ *         - name: maxPersons
+ *           description: person number
+ *           in: formData
+ *           required: true
+ *           type: Number
+ *         responses: 
+ *             '200': 
+ *               description: Success
  */
- router.put('/room/:id', updateRoom)
+ router.put('/api/rooms/:id', updateRoom)
 
 
 /**
  * @swagger
- * /room:
- *    post:
- *      description: post room
- *      parameters:
- *      - name: name
- *        description: name of the room
- *        in: formData
- *        required: true
- *        type: String
- *      - name: maxPersons
- *        description: name of the room
- *        in: formData
- *        required: true
- *        type: Number
- *      responses: 
- *          '201': 
- *            description: Success
+ * /rooms:
+ *  post:
+ *     description: post room
+ *     parameters:
+ *     - name: name
+ *       description: name of the room
+ *       in: formData
+ *       required: true
+ *       type: String
+ *     - name: maxPersons
+ *       description: person number
+ *       in: formData
+ *       required: true
+ *       type: Number
+ *     responses: 
+ *         '201': 
+ *           description: Success
  */
-router.post('/room', addRoom)
+router.post('/api/rooms', addRoom)
 
 /**
  * @swagger
- * /room/:id:
+ * /rooms/:id:
  *    put:
  *      description: get room
  *      responses: 
  *          '200': 
  *            description: Success
  */
- router.get('/room/:id', getOneRoom)
+ router.get('/api/rooms/:id', getOneRoom)
 
 
 /**
  * @swagger
- * /room/:id:
+ * /rooms/:id:
  *    delete:
  *      description: delete room
  *      responses: 
  *          '200': 
  *            description: Success
  */
- router.delete('/room/:id', deleteRooms)
+ router.delete('/api/rooms/:id', deleteRooms)
 
 export default router

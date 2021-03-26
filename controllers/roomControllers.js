@@ -46,11 +46,12 @@ export const deleteRooms = (req,res) => {
 }
 
 export const getOneRoom = (req,res) => {
-    RoomModel.findById({_id: req.params.id})
-    .then((room) => {
-        res.status(200).send(room)
-    })
-    .catch((err) => {
-        res.status(404).send('Aucune chambre trouvée.')
-    })
+    RoomModel
+        .findById({_id: req.params.id})
+        .then((room) => {
+            res.status(200).send(room)
+        })
+        .catch((err) => {
+            res.status(404).send('Aucune chambre trouvée.')
+        })
 }
