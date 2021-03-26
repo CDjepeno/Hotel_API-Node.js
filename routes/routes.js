@@ -1,11 +1,8 @@
 import express from 'express'
 import {config} from '../Docs-API/docs-config.js'
 import {server} from '../Docs-API/docs-config.js'
-import {getRooms,deleteRooms,getOneRoom,updateRooms,postRooms} from '../controllers/roomControllers.js'
-import swaggerJsDoc from 'swagger-jsdoc'
-import swaggerUI from 'swagger-ui-express'
+import {getRooms,deleteRooms,getOneRoom,updateRoom,addRoom} from '../controllers/roomControllers.js'
 
-// const room = require('../controllers/roomControllers.js')
 
 const router = express.Router()
 const app = express()
@@ -30,47 +27,59 @@ router.get('/rooms', getRooms)
 
 /**
  * @swagger
- * /rooms/:id:
+ * /room/:id:
  *    get:
  *      description: update room
  *      responses: 
  *          '200': 
  *            description: Success
  */
- router.put('/rooms', updateRooms)
+ router.put('/room/:id', updateRoom)
+
 
 /**
  * @swagger
- * /rooms:
+ * /room:
  *    post:
  *      description: post room
+ *      parameters:
+ *      - name: name
+ *        description: name of the room
+ *        in: formData
+ *        required: true
+ *        type: String
+ *      - name: maxPersons
+ *        description: name of the room
+ *        in: formData
+ *        required: true
+ *        type: Number
  *      responses: 
  *          '201': 
  *            description: Success
  */
-router.post('/rooms', postRooms)
+router.post('/room', addRoom)
 
 /**
  * @swagger
- * /rooms/:id:
+ * /room/:id:
  *    put:
  *      description: get room
  *      responses: 
  *          '200': 
  *            description: Success
  */
- router.get('/rooms', getOneRoom)
+ router.get('/room', getOneRoom)
 
 
 /**
  * @swagger
- * /rooms/:id:
+ * /room/:id:
  *    delete:
  *      description: delete room
  *      responses: 
  *          '200': 
  *            description: Success
  */
- router.delete('/rooms', deleteRooms)
+ router.delete('/room', deleteRooms)
 
 export default router

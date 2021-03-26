@@ -1,16 +1,37 @@
+import RoomModel from '../models/roomModel.js'
+
 export const getRooms = (_,res) => {
-    res.json({
-        name: 'Les suite présidentiels sont super'
+    RoomModel
+        .find()
+        .then((rooms) => {
+            res.status(200).send(rooms)
+        })
+        .catch((error) => {
+            res.status(500).send(error)
+        })
+}
+
+export const addRoom =  (req, res) => {
+    const room = new RoomModel(req.body)
+    room
+        .save()
+        .then(() => {
+            res.send(room)
+        })
+        .catch((error) => {
+            res.status(500).send(error)
+        })
+}
+
+export const updateRoom = (req,res) => {
+    const room = new RoomModel(req.body)
+
+    room.findOneAndUpdate({_id: req.params.id}, room)
+    .then(() => {
+        res.status(201).json('La chambre à bien été modifier')
     })
-}
-
-export const postRooms = (req,res) => {
-    res.send(req.body)
-}
-
-export const updateRooms = (req,res) => {
-    res.send({
-        name: "Modification d'une chambre"
+    .catch((error) => {
+        res.status(400).send(error)
     })
 }
 
