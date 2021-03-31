@@ -1,8 +1,8 @@
 import passport from 'passport'
 import { Strategy } from 'passport-local'
 import UserModel from '../models/userModel.js'
-import JWT, { ExtractJwt } from 'passport-jwt'
-const { Strategy: JWTStrategy, Extract } = JWT
+import JWT from 'passport-jwt'
+const { Strategy: JWTStrategy, ExtractJwt } = JWT
 
 /**
  * register
@@ -59,7 +59,7 @@ passport.use(
 passport.use(
     new JWTStrategy(
         {
-            secretOrKey: 'mot de passe',
+            secretOrKey: 'mamamia',
             jwtFromRequest: ExtractJwt.fromUrlQueryParameter('token')
         },
         async (token,done) => {
