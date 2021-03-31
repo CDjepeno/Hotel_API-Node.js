@@ -12,6 +12,7 @@ export const getRooms = (_,res) => {
 }
 
 export const addRoom =  (req, res) => {
+
     const room = new RoomModel(req.body)
     room
         .save()
@@ -45,8 +46,7 @@ export const deleteRooms = (req,res) => {
         })
 }
 
-export const getOneRoom = (req,res) => {
-    RoomModel
+export const getOneRoom = (req,res) => {    RoomModel
         .findById({_id: req.params.id})
         .then((room) => {
             res.status(200).send(room)
@@ -55,3 +55,12 @@ export const getOneRoom = (req,res) => {
             res.status(404).send('Aucune chambre trouvée.')
         })
 }
+
+/**
+ * export {
+ *  module : {
+ *      add,
+ *        delete
+ * }
+ * }
+ */

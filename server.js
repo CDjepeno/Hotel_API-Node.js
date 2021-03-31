@@ -2,7 +2,7 @@ import express from 'express'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import routes from './routes/routes.js'
-import bodyParser from 'body-parser'
+import './auth/auth.js'
 dotenv.config()
 
 const PORT = process.env.PORT || 4000
@@ -14,8 +14,7 @@ const app = express()
  */
 app
     .use(express.json())
-    .use(express.urlencoded())
-    .use(bodyParser.json())
+    .use(express.json())
     .use(routes)
 
 /**
@@ -24,7 +23,8 @@ app
 mongoose.connect(process.env.MONGODB, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useFindAndModify: false
+    useFindAndModify: false,
+    useCreateIndex: true
 })
 
 app.listen(PORT, () => {

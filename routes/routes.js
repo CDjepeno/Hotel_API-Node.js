@@ -2,6 +2,9 @@ import express from 'express'
 import {config} from '../Docs-API/docs-config.js'
 import {server} from '../Docs-API/docs-config.js'
 import {getRooms,deleteRooms,getOneRoom,updateRoom,addRoom} from '../controllers/roomControllers.js'
+import passport from 'passport'
+import { login, register } from '../controllers/userController.js'
+
 
 
 const router = express.Router()
@@ -25,6 +28,19 @@ router.get('/', (_,res) => {
  */
 router.get('/api/rooms', getRooms)
 
+
+/**
+ * @swagger
+ * /rooms/:id:
+ *    put:
+ *      description: get room
+ *      responses: 
+ *          '200': 
+ *            description: Success
+ */
+ router.get('/api/rooms/:id', getOneRoom)
+
+ 
 /**
  * @swagger
  * /rooms/:id:
@@ -70,17 +86,31 @@ router.get('/api/rooms', getRooms)
  */
 router.post('/api/rooms', addRoom)
 
-/**
- * @swagger
- * /rooms/:id:
- *    put:
- *      description: get room
- *      responses: 
- *          '200': 
- *            description: Success
- */
- router.get('/api/rooms/:id', getOneRoom)
 
+
+router.post('/register', passport.authenticate('register', { session: false }), register)
+
+
+router.post('/login', ('login', (req, res, next) => {
+    passport.authenticate('login', async (err,user) => {
+        try {
+            if (err || !user) {
+                const error = new Error('Une erreur est survenue')
+                return next(error)
+            }
+
+            req.login(user, { session: false }, async error => {
+                if (error) return next(error)
+
+                const body = { id: user._id, email: user.email }
+
+                res.json(body)
+            })
+        } catch (error) {
+            return next(error)
+        }
+    })(req, res, next)
+}))
 
 /**
  * @swagger
