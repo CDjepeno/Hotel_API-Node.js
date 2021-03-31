@@ -3,7 +3,8 @@ import {config} from '../Docs-API/docs-config.js'
 import {server} from '../Docs-API/docs-config.js'
 import {getRooms,deleteRooms,getOneRoom,updateRoom,addRoom} from '../controllers/roomControllers.js'
 import passport from 'passport'
-import { login, register } from '../controllers/userController.js'
+import { register } from '../controllers/userController.js'
+import jwt from 'jsonwebtoken'
 
 
 
@@ -102,9 +103,11 @@ router.post('/login', ('login', (req, res, next) => {
             req.login(user, { session: false }, async error => {
                 if (error) return next(error)
 
-                const body = { id: user._id, email: user.email }
+                const body = {_id: user._id, email: user.email }
 
-                res.json(body)
+                const token = jwt.sign({user: body}, process.env.TOKEN)
+
+                res.json({ token })
             })
         } catch (error) {
             return next(error)
