@@ -32,7 +32,7 @@ router.get('/api/rooms', getRooms)
 
 /**
  * @swagger
- * /rooms/:id:
+ * /api/rooms/:id:
  *    put:
  *      description: get room
  *      responses: 
@@ -44,7 +44,7 @@ router.get('/api/rooms', getRooms)
  
 /**
  * @swagger
- * /rooms/:id:
+ * /api/rooms/:id:
  *       put:
  *         description: update room
  *         parameters:
@@ -67,7 +67,7 @@ router.get('/api/rooms', getRooms)
 
 /**
  * @swagger
- * /rooms:
+ * /api/rooms:
  *  post:
  *     description: post room
  *     parameters:
@@ -90,7 +90,7 @@ router.post('/api/rooms', addRoom)
 
 /**
  * @swagger
- * /register:
+ * /api/register:
  *  post:
  *     description: register
  *     parameters:
@@ -108,12 +108,12 @@ router.post('/api/rooms', addRoom)
  *         '201': 
  *           description: Success
  */
-router.post('/register', passport.authenticate('register', { session: false }), register)
+router.post('/api/register', passport.authenticate('register', { session: false }), register)
 
 
 /**
  * @swagger
- * /login:
+ * /api/login:
  *  post:
  *     description: register
  *     parameters:
@@ -131,7 +131,7 @@ router.post('/register', passport.authenticate('register', { session: false }), 
  *         '201': 
  *           description: Success
  */
-router.post('/login', ('login', (req, res, next) => {
+router.post('/api/login', ('login', (req, res, next) => {
     passport.authenticate('login', async (err,user) => {
         try {
             if (err || !user) {
@@ -156,7 +156,7 @@ router.post('/login', ('login', (req, res, next) => {
 
 /**
  * @swagger
- * /rooms/:id:
+ * /api/rooms/:id:
  *    delete:
  *      description: delete room
  *      responses: 
