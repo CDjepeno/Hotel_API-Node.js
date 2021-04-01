@@ -88,10 +88,49 @@ router.get('/api/rooms', getRooms)
 router.post('/api/rooms', addRoom)
 
 
-
+/**
+ * @swagger
+ * /register:
+ *  post:
+ *     description: register
+ *     parameters:
+ *     - name: email
+ *       description: Email of the user
+ *       in: formData
+ *       required: true
+ *       type: Email
+ *     - name: password
+ *       description: password
+ *       in: formData
+ *       required: true
+ *       type: Password
+ *     responses: 
+ *         '201': 
+ *           description: Success
+ */
 router.post('/register', passport.authenticate('register', { session: false }), register)
 
 
+/**
+ * @swagger
+ * /login:
+ *  post:
+ *     description: register
+ *     parameters:
+ *     - name: email
+ *       description: Email of the user
+ *       in: formData
+ *       required: true
+ *       type: Email
+ *     - name: password
+ *       description: password
+ *       in: formData
+ *       required: true
+ *       type: Password
+ *     responses: 
+ *         '201': 
+ *           description: Success
+ */
 router.post('/login', ('login', (req, res, next) => {
     passport.authenticate('login', async (err,user) => {
         try {
