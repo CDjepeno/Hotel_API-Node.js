@@ -14,12 +14,13 @@ Hotel_Management API
     <img src="https://img.shields.io/badge/Mongoose-V%5E5.10.7-green" alt="mongoose version">
 </p>
 
-![hotel_API](https://user-images.githubusercontent.com/43074465/112665375-483c1f80-8e5b-11eb-90c0-35baf74ff35f.png)
+![hotelAPI](https://user-images.githubusercontent.com/43074465/113324505-787e3500-9317-11eb-91dd-eb5e7399abf5.png)
 
 
 ![nodeJS](https://user-images.githubusercontent.com/43074465/112568039-26eb1d00-8de2-11eb-866c-d329ba8f2cf7.png)
 ![express-js](https://user-images.githubusercontent.com/43074465/112568044-29e60d80-8de2-11eb-848f-12a64abcc26e.png)
 ![mongodb](https://user-images.githubusercontent.com/43074465/112568058-2e122b00-8de2-11eb-9e04-1d3a41848ef9.jpg)
+![swagger-logo](https://user-images.githubusercontent.com/43074465/113324493-74521780-9317-11eb-8f14-87f892815314.jpeg)
 
 
 ## Features
