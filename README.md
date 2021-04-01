@@ -26,6 +26,7 @@ Hotel_Management API
 ## Features
 - Utilisation de swagger docs pour documenter l'api
 - MongoDB
+- Authentification JWT Token
 - CRUD
 
 ## Getting Started
